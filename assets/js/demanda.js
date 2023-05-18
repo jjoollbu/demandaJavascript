@@ -128,31 +128,29 @@ const alterarCpf = document.getElementById('alterar__cpf');
 const alterarEmail = document.getElementById('alterar__email');
 const alterarTelefone = document.getElementById('alterar__telefone');
 
-
-
-function corrigirLinha(){
+function corrigirLinha() {
     const cells = selecionar_linha.getElementsByTagName('td');
     
-    if (alterarNome.value.length > 0) {
-        cells[0].innerHTML = alterarNome.value;
-    }
-    if (alterarCpf.value.length > 0) {
-        cells[1].innerHTML = alterarCpf.value;
-    }
-    if (alterarEmail.value.length > 0) {
-        cells[2].innerHTML = alterarEmail.value;
-    }
-    if (alterarTelefone.value.length > 0) {
-        cells[3].innerHTML = alterarTelefone.value;
-    }
+    const inputs = [alterarNome, alterarCpf, alterarEmail, alterarTelefone];
+    const cell_valores = [0, 1, 2, 3];
+    
+    for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+    const cell_valor = cell_valores[i];
+    
 
-    function resetartxt(){
-        
-        alterarNome.value = '';
-        alterarCpf.value = '';
-        alterarEmail.value = '';
-        alterarTelefone.value = '';
+    if (input.value.length > 0) {
+      cells[cell_valor].innerHTML = input.value;
     }
+    }
+    
+    function resetartxt() {
+    inputs.forEach((input) => {
+    input.value = '';
+    });
+    }
+    
+    
         resetartxt()
     }
 
